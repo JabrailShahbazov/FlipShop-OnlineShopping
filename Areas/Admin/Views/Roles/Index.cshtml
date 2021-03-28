@@ -1,0 +1,40 @@
+﻿@model List<FlipShop_OnlineShopping.Models.ViewModel.RoleViewModels.RoleListViewModel>
+@{
+    ViewData["Title"] = "Role";
+}
+
+
+<h1>Rollarin siyahisi</h1>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Role adi</th>
+                    <th scope="col">Aciklama</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var listRole in Model)
+                {
+                    <tr>
+                        <th scope="row">@listRole.Id</th>
+                        <td>@listRole.RoleName</td>
+                        <td>@listRole.Description</td>
+                        <td>
+                            <form asp-action="Delete" asp-controller="Role" asp-area="Admin" asp-route-id="@listRole.Id" data-ajax="true" data-ajax-success="deleteItem(this)">
+                                <button type="submit" class="btn btn-sm btn-danger d-none d-md-inline-block">
+                                    Sil
+                                </button>
+                            </form>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
